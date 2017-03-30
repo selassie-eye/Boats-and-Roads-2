@@ -1,0 +1,33 @@
+package model.tile;
+
+import model.terrain.Terrain;
+
+import java.util.ArrayList;
+
+/**
+ * Created by khariollivierre on 3/29/17.
+ */
+public class Tile {
+    ArrayList<TileEdge> edges;
+    Terrain terrain;
+
+    public Tile(ArrayList<TileEdge> edges, Terrain terrain){
+        this.edges = edges;
+        this.terrain = terrain;
+    }
+
+    public ArrayList<TileEdge> getEdges() { return edges; }
+    public TileEdge getEdge(int index){ return edges.get(index); }
+    public Terrain getTerrain() { return terrain; }
+
+    public void setEdges(ArrayList<TileEdge> edges) { this.edges = edges; }
+    public void setEdge(int index, TileEdge edge){ edges.set(index, edge); }
+    public void setTerrain(Terrain terrain){ this.terrain = terrain; }
+
+    public void sourceRivers(){
+        for (TileEdge edge : edges){
+            if(edge.isRiver()) edge.setSource(true);
+        }
+    }
+
+}
