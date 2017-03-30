@@ -11,9 +11,10 @@ public class Tile {
     ArrayList<TileEdge> edges;
     Terrain terrain;
 
-    public Tile(ArrayList<TileEdge> edges, Terrain terrain){
+    public Tile(ArrayList<TileEdge> edges, Terrain terrain, int rotation){
         this.edges = edges;
         this.terrain = terrain;
+        rotate(rotation);
     }
 
     public ArrayList<TileEdge> getEdges() { return edges; }
@@ -27,6 +28,12 @@ public class Tile {
     public void sourceRivers(){
         for (TileEdge edge : edges){
             if(edge.isRiver()) edge.setSource(true);
+        }
+    }
+
+    private void rotate(int rotation){
+        for(int i = 0; i < rotation; i++){
+            edges.add(0, edges.remove(5));
         }
     }
 

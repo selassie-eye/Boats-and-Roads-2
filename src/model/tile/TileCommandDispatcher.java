@@ -23,11 +23,13 @@ public class TileCommandDispatcher {
         boolean[] rivers = command.getRivers();
         boolean[] sources = command.getSources();
         Terrain terrain = command.getTerrain();
+        int rotation = command.getRotation();
 
         for (int i = 0; i < 6; i++){ tileBuilder.buildEdge(rivers[i], sources[i], i); }
         tileBuilder.buildTerrain(terrain);
 
-        return tileBuilder.buildTile();
+        return tileBuilder.buildTile(rotation);
+
     }
 
     public void execute(TilePlacementCommand command){

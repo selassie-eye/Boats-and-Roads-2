@@ -28,4 +28,6 @@ public class Location {
     public Location south() { return new Location(xCoord, yCoord - 1, zCoord + 1); }
     public Location southwest() { return new Location(xCoord - 1, yCoord, zCoord + 1); }
     public Location northwest() { return new Location(xCoord - 1, yCoord + 1, zCoord); }
+
+    public Location2D convert(){ return new Location2D(xCoord, zCoord + (xCoord - (xCoord&1)) / 2); }
 }
